@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="친구"
+        android:enabled="true"
+        android:id="@+id/menu_friends"
+        android:icon="@drawable/friends"
+        />
+    <item
+        android:title="대화"
+        android:enabled="true"
+        android:id="@+id/menu_chatting"
+        android:icon="@drawable/chatting"
+        />
+    <item
+        android:title="뷰"
+        android:enabled="true"
+        android:id="@+id/menu_view"
+        android:icon="@drawable/view"
+        />
+    <item
+        android:title="쇼핑"
+        android:enabled="true"
+        android:id="@+id/menu_shopping"
+        android:icon="@drawable/shopping"
+        />
+    <item
+        android:title="설정"
+        android:enabled="true"
+        android:id="@+id/menu_setting"
+        android:icon="@drawable/setting"
+        />
+</menu>
