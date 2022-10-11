@@ -1,15 +1,11 @@
 package com.example.copycat
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.copycat.databinding.ChatListBinding
-import com.example.copycat.databinding.FragmentChattingBinding
-import com.example.copycat.fragment.ChattingFragment
 
-class ChatAdapter : RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
+class ChatAdapter(private val datas: ArrayList<ChatUserData>) : RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
     var list = mutableListOf<ChatUserData>()
 
     inner class ChatViewHolder(private val binding: ChatListBinding) : RecyclerView.ViewHolder(binding.root) {

@@ -2,4 +2,20 @@
     <string name="app_name">CopyCat</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="friends_1">유림</string>
+    <string name="friends_2">엄마</string>
+    <string name="friends_3">아빠</string>
+    <string name="friends_4">영환</string>
+    <string name="friends_5">용수</string>
+    <string name="friends_6">종욱</string>
+    <string name="friends_7">준호</string>
+    <string name="date_today">10월 11일</string>
+    <string name="date_yesterday">10월 10일</string>
+    <string name="content_a">안뇽</string>
+    <string name="content_b">안녕하세여</string>
+    <string name="content_c">안녕하세요</string>
+    <string name="content_d">ㄹㅇㅋㅋ</string>
+    <string name="content_e">ㅎㅇㅋㅋ</string>
+    <string name="content_f">ㅎㅇㅠㅠ</string>
+    <string name="content_g">ㅎㅁㅎ</string>
 </resources>
