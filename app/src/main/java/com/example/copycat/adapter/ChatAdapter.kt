@@ -1,14 +1,23 @@
 package com.example.copycat
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.copycat.databinding.ChatListBinding
+import kotlinx.android.synthetic.main.chat_list.view.*
 
-class ChatAdapter(private val datas: ArrayList<ChatUserData>) : RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
-    var list = mutableListOf<ChatUserData>()
+class ChatAdapter(private var datas : ArrayList<ChatUserData>): RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
 
-    inner class ChatViewHolder(private val binding: ChatListBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ChatViewHolder(private val binding: ChatListBinding) : RecyclerView.ViewHolder(binding.root) {
+//
+//        val name = binding.userName
+//        val content = binding.content
+//        val date = binding.date
+//
+//
+
         fun bind(chatUserData: ChatUserData){
             binding.userName.text = chatUserData.user_name
             binding.content.text = chatUserData.content
@@ -22,10 +31,13 @@ class ChatAdapter(private val datas: ArrayList<ChatUserData>) : RecyclerView.Ada
     }
 
     override fun onBindViewHolder(holder: ChatViewHolder, position: Int) {
-        holder.bind(list[position])
+          holder.bind(datas[position])
+//        holder.name.text = currentItem.user_name
+//        holder.content.text = currentItem.content
+//        holder.date.text = currentItem.date
     }
 
-    override fun getItemCount(): Int = list.size
+    override fun getItemCount(): Int = datas.size
 
 
 }

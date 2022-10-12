@@ -11,6 +11,7 @@ import com.example.copycat.ChatAdapter
 import com.example.copycat.ChatUserData
 import com.example.copycat.R
 import com.example.copycat.databinding.FragmentChattingBinding
+import java.util.zip.Inflater
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -50,6 +51,7 @@ class ChattingFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_chatting, container, false)
+
     }
 
     companion object {
@@ -71,6 +73,7 @@ class ChattingFragment : Fragment() {
                 }
             }
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         dataInitialize()
@@ -117,7 +120,7 @@ class ChattingFragment : Fragment() {
 
         for (i in name.indices){
 
-            val users = ChatUserData("",name[i], date[i], content[i])
+            val users = ChatUserData("","${name[i]}", "${date[i]}", "${content[i]}")
             datas.add(users)
         }
     }

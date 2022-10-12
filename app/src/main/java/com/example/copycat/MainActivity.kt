@@ -28,10 +28,10 @@ class MainActivity : AppCompatActivity() {
         binding.bn.selectedItemId = R.id.viewFrame
 
     }
-    private fun changeFragment(fragment: Fragment) { // Fragment 전환할때 필요한 함수
+    private fun changeFragment(chattingFragment: Fragment) { // Fragment 전환할때 필요한 함수
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.frameLayout, fragment)
+            .replace(R.id.frameLayout, chattingFragment)
             .commit()
     }
 
