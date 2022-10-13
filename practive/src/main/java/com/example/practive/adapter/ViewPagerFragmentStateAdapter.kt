@@ -1,8 +1,10 @@
-package com.example.practive
+package com.example.practive.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.practive.fragments.DoneFragment
+import com.example.practive.fragments.PendingFragment
 
 class ViewPagerFragmentStateAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter(fragmentActivity) {
 

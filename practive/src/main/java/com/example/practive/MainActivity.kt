@@ -2,18 +2,12 @@ package com.example.practive
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.SystemClock
-import android.util.Log
-import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
-import android.view.MotionEvent
-import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.FragmentTransaction
 import com.example.practive.databinding.ActivityMainBinding
-import org.w3c.dom.Text
+import com.example.practive.fragments.HomeFragment
 
 class MainActivity : AppCompatActivity() {
 

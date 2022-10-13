@@ -1,11 +1,17 @@
-package com.example.practive
+package com.example.practive.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.practive.R
+import com.example.practive.Todo
+import com.example.practive.adapter.TodoDoneAdapter
+import com.example.practive.adapter.TodoPendingAdapter
 import com.example.practive.databinding.FragmentDoneBinding
+import com.example.practive.databinding.FragmentPendingBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,6 +29,7 @@ class DoneFragment : Fragment() {
     private var param2: String? = null
 
     private lateinit var binding: FragmentDoneBinding
+    private lateinit var adapter: TodoDoneAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +44,18 @@ class DoneFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_done, container, false)
+        binding = FragmentDoneBinding.inflate(inflater, container, false)
+
+        // 2. Adapter 연결 ( list를 인자로 )
+        adapter = TodoDoneAdapter(emptyList<Todo>())
+        adapter.setHasStableIds(true)
+        binding!!.rvDone.adapter = adapter
+
+        // 3. recyclerView에 Layout 꼭 설정하기 ( 안그러면 화면에 표시 안되고 skip됨 )
+        binding!!.rvDone.layoutManager = LinearLayoutManager(activity)
+
+        // 4. return Fragment Layout View
+        return binding.root
     }
 
     companion object {

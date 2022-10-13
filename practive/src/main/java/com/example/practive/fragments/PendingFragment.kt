@@ -1,10 +1,15 @@
-package com.example.practive
+package com.example.practive.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.practive.R
+import com.example.practive.Todo
+import com.example.practive.adapter.TodoPendingAdapter
 import com.example.practive.databinding.FragmentPendingBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -23,6 +28,7 @@ class PendingFragment : Fragment() {
     private var param2: String? = null
 
     private lateinit var binding: FragmentPendingBinding
+    private lateinit var adapter: TodoPendingAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +43,19 @@ class PendingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pending, container, false)
+        // 1. ViewBinding 설정
+        binding = FragmentPendingBinding.inflate(inflater, container, false)
+
+        // 2. Adapter 연결 ( list를 인자로 )
+        adapter = TodoPendingAdapter(listOf(Todo("first title", "first content", false)))
+        adapter.setHasStableIds(true)
+        binding!!.rvPending.adapter = adapter
+
+        // 3. recyclerView에 Layout 꼭 설정하기 ( 안그러면 화면에 표시 안되고 skip됨 )
+        binding!!.rvPending.layoutManager = LinearLayoutManager(activity)
+
+        // 4. return Fragment Layout View
+        return binding.root
     }
 
     companion object {

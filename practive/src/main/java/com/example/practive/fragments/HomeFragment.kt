@@ -1,4 +1,4 @@
-package com.example.practive
+package com.example.practive.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
+import com.example.practive.adapter.ViewPagerFragmentStateAdapter
 import com.example.practive.databinding.FragmentHomeBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
