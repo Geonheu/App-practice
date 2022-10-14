@@ -1,5 +1,6 @@
 package com.example.copycat.fragment
 
+import ChatAdapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,10 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.copycat.ChatAdapter
 import com.example.copycat.ChatUserData
 import com.example.copycat.R
 import com.example.copycat.databinding.FragmentChattingBinding
+import kotlinx.android.synthetic.main.chat_list.*
 import java.util.zip.Inflater
 
 // TODO: Rename parameter arguments, choose names that match
@@ -50,8 +51,13 @@ class ChattingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_chatting, container, false)
-
+        binding = FragmentChattingBinding.inflate(inflater, container, false)
+        dataInitialize()
+        val layoutManager = LinearLayoutManager(activity)
+        binding.recyclerVertical.layoutManager = layoutManager
+        adapter = ChatAdapter(datas)
+        binding.recyclerVertical.adapter = adapter
+        return binding.root
     }
 
     companion object {
@@ -74,19 +80,10 @@ class ChattingFragment : Fragment() {
             }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        dataInitialize()
-        val layoutManager = LinearLayoutManager(context)
-        recyclerView = binding.recyclerVertical
-        recyclerView.layoutManager = layoutManager
-        recyclerView.setHasFixedSize(true)
-        adapter = ChatAdapter(datas)
-        recyclerView.adapter = adapter
-    }
 
     private fun dataInitialize() {
         datas = arrayListOf<ChatUserData>()
+
 
         name = arrayOf(
             getString(R.string.friends_1),
@@ -120,7 +117,7 @@ class ChattingFragment : Fragment() {
 
         for (i in name.indices){
 
-            val users = ChatUserData("","${name[i]}", "${date[i]}", "${content[i]}")
+            val users = ChatUserData("${name[i]}", "${date[i]}", "${content[i]}")
             datas.add(users)
         }
     }
