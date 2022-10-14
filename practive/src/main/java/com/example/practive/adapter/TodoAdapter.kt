@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.practive.Todo
 import com.example.practive.databinding.ItemTodoBinding
 
-class TodoDoneAdapter(var Todos: List<Todo>): RecyclerView.Adapter<TodoDoneAdapter.TodoViewHolder>() {
+class TodoAdapter(var Todos: List<Todo>, val onClickDeleteButton: (todo: Todo) -> Unit, val onCheckedChange: (todo: Todo, isChecK: Boolean) -> Unit): RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
 
     private lateinit var itemBinding: ItemTodoBinding
 
@@ -15,7 +15,18 @@ class TodoDoneAdapter(var Todos: List<Todo>): RecyclerView.Adapter<TodoDoneAdapt
         fun bind(data: Todo){
             itemBinding.tvTitle.text = data.title
             itemBinding.tvContent.text = data.content
+            // update toggle 이 되지않아 함수를 null로 먼저 초기화
+            itemBinding.cbIsDone.setOnCheckedChangeListener(null)
             itemBinding.cbIsDone.isChecked = data.isDone
+
+            // delete 추가
+            itemBinding.btnDelete.setOnClickListener {
+                onClickDeleteButton.invoke(data)
+            }
+            // update toggle 다시 추가
+            itemBinding.cbIsDone.setOnCheckedChangeListener { _, isChecked ->
+                onCheckedChange.invoke(data, isChecked)
+            }
         }
     }
 
@@ -23,14 +34,14 @@ class TodoDoneAdapter(var Todos: List<Todo>): RecyclerView.Adapter<TodoDoneAdapt
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): TodoViewHolder {
+    ): TodoAdapter.TodoViewHolder {
         itemBinding = ItemTodoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return TodoViewHolder(itemBinding)
     }
 
     // viewHolder에 각 view를 bind 하는 함수
     // TodoViewHolder에 bind를 정의했으므로, 각 Todos[position]인 item data랑 view를 bind하면 됨.
-    override fun onBindViewHolder(holder: TodoDoneAdapter.TodoViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TodoAdapter.TodoViewHolder, position: Int) {
         holder.bind(Todos[position])
     }
 
@@ -39,5 +50,15 @@ class TodoDoneAdapter(var Todos: List<Todo>): RecyclerView.Adapter<TodoDoneAdapt
 
     override fun getItemId(position: Int): Long {
         return position.toLong()
+    }
+
+    fun setDoneData(doneData: List<Todo>){
+        Todos = doneData
+        notifyDataSetChanged()
+    }
+
+    fun setPendingData(pendingData: List<Todo>){
+        Todos = pendingData
+        notifyDataSetChanged()
     }
 }
