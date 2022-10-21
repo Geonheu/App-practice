@@ -5,10 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.example.practive.Adapter.ListAdapter
+import com.example.practive.Adapter.ViewPagerAdapter
 import com.example.practive.databinding.FragmentMineBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -60,6 +61,13 @@ class MineFragment : Fragment() {
         binding!!.recyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
         // 4. return Fragment layout view
+
+        // 5. viewPager 연결
+        val viewpager: ViewPager2 = binding.viewPager
+        val viewpagerAdapter = ViewPagerAdapter(this)
+        viewpager.adapter = viewpagerAdapter
+
+
         return binding.root
     }
 

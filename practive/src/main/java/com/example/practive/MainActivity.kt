@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
 
         // 3. Toolbar Setting & Change Toolbar Title
         setSupportActionBar(binding.toolBar)
+        supportActionBar?.setDisplayShowTitleEnabled(false) // 액션바에 제목 표시 여부
 
     }
 
